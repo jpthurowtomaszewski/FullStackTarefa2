@@ -1,0 +1,29 @@
+POST http://localhost:3000/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Tarefa: Estudar Node.js",
+  "descricao": "Criar um CRUD basico usando Express",
+  "deadline": "2025-12-31",
+  "prioridade": "alta"
+}
+
+###
+
+GET http://localhost:3000/tarefas
+
+###
+
+PUT http://localhost:3000/tarefas/1fa6214c-e4f3-45db-b14a-2510ee54a985
+Content-Type: application/json
+
+{
+  "titulo": "Tarefa: Estudar Node.js",
+  "descricao": "Criar um CRUD mediano usando Express",
+  "deadline": "2025-12-31",
+  "prioridade": "alta"
+}
+
+###
+
+DELETE http://localhost:3000/tarefas/1fa6214c-e4f3-45db-b14a-2510ee54a985
