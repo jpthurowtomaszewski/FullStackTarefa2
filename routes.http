@@ -2,7 +2,7 @@ POST http://localhost:3000/tarefas
 Content-Type: application/json
 
 {
-  "titulo": "Tarefa: Estudar Node.js",
+  "titulo": "Tarefa: Dominar Tudo",
   "descricao": "Criar um CRUD basico usando Express",
   "deadline": "2025-12-31",
   "prioridade": "alta"
@@ -14,16 +14,16 @@ GET http://localhost:3000/tarefas
 
 ###
 
-PUT http://localhost:3000/tarefas/1fa6214c-e4f3-45db-b14a-2510ee54a985
+PUT http://localhost:3000/tarefas/8871220c-61f5-45e5-9e04-2d8d613706cb
 Content-Type: application/json
 
 {
-  "titulo": "Tarefa: Estudar Node.js",
-  "descricao": "Criar um CRUD mediano usando Express",
+  "titulo": "Tarefa: Estudar Node.js 2",
+  "descricao": "Aprender a criar um CRUD mediano usando Express",
   "deadline": "2025-12-31",
   "prioridade": "alta"
 }
 
 ###
 
-DELETE http://localhost:3000/tarefas/1fa6214c-e4f3-45db-b14a-2510ee54a985
+DELETE http://localhost:3000/tarefas/3869c46d-4bd2-43aa-a922-361cf77cfbe7

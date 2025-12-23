@@ -3,8 +3,9 @@ import { randomUUID} from "node:crypto";
 export class DatabaseMemory {
     #tarefas = new Map
 
-    list() {
-        return Array.from(this.#tarefas.entries()).map((tarefaArray) => {
+    list(search) {
+        return Array.from(this.#tarefas.entries())
+        .map((tarefaArray) => {
             const id = tarefaArray[0];
             const tarefa = tarefaArray[1];  
             
@@ -12,7 +13,13 @@ export class DatabaseMemory {
                 id,
                 ...tarefa
             }
-        });
+        })
+        .filter(tarefa => {
+            if (search) {
+                return tarefa.titulo.includes(search) || tarefa.descricao.includes(search);
+            } else {                        
+                return true;
+            }});
     }
 
     create(tarefa) {

@@ -9,10 +9,12 @@
 
 import { fastify } from 'fastify';
 import { DatabaseMemory } from './database-memory.js';
+import { DatabasePostgres } from './database-postgres.js';
 
 
 const server = fastify();
-const database = new DatabaseMemory();
+//const database = new DatabaseMemory();
+const database = new DatabasePostgres();
 
 // CRUD - Create, Read, Update, Delete
 // GET http://localhost:3000/tarefas
@@ -26,19 +28,21 @@ server.get('/', () => {
     return 'Opa';
 });
 
-server.get('/tarefas', () => {
-    const tarefas = database.list();
-    console.log(tarefas);
+server.get('/tarefas', async (request) => {
+    const search = request.query.search;
+    
+    const tarefas = await database.list(search);
+    
     return tarefas;
 });
 
-server.post('/tarefas', (request, reply) => {
+server.post('/tarefas', async (request, reply) => {
 
 //request.body
 
     const { titulo, descricao, deadline, prioridade } = request.body
 
-    database.create({
+    await database.create({
         titulo,
         descricao,
         deadline,
@@ -50,11 +54,11 @@ server.post('/tarefas', (request, reply) => {
     return reply.status(201).send('tarefa criada com sucesso');
 });
 
-server.put('/tarefas/:id', (request, reply) => {
+server.put('/tarefas/:id', async (request, reply) => {
     const tarefaId = request.params.id;
     const { titulo, descricao, deadline, prioridade } = request.body;
 
-    const tarefa = database.update(tarefaId, {
+    const tarefa = await database.update(tarefaId, {
         titulo,
         descricao,
         deadline,
@@ -64,10 +68,14 @@ server.put('/tarefas/:id', (request, reply) => {
     return reply.status(200).send('tarefa atualizada com sucesso');
 });
 
-server.delete('/tarefas/:id', (request, reply) => {
+server.delete('/tarefas/:id', async (request, reply) => {
     const tarefaId = request.params.id;
-    database.delete(tarefaId);
+    await database.delete(tarefaId);
     reply.status(200).send('tarefa deletada com sucesso');
 });
 
-server.listen({ port: 3000 });
+server.listen({ 
+    port: process.env.PORT ??3333 
+}, () => {
+    console.log('Server is running on port 3333');
+});
