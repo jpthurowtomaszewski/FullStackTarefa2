@@ -1,4 +1,4 @@
-POST http://localhost:3000/tarefas
+POST https://fullstacktarefa2.onrender.com/tarefas
 Content-Type: application/json
 
 {
@@ -10,15 +10,15 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/tarefas
+GET https://fullstacktarefa2.onrender.com/tarefas
 
 ###
 
-PUT http://localhost:3000/tarefas/8871220c-61f5-45e5-9e04-2d8d613706cb
+PUT https://fullstacktarefa2.onrender.com/tarefas/8871220c-61f5-45e5-9e04-2d8d613706cb
 Content-Type: application/json
 
 {
-  "titulo": "Tarefa: Estudar Node.js 2",
+  "titulo": "Tarefa: Deploy do CRUD com sucesso",
   "descricao": "Aprender a criar um CRUD mediano usando Express",
   "deadline": "2025-12-31",
   "prioridade": "alta"
@@ -26,4 +26,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/tarefas/3869c46d-4bd2-43aa-a922-361cf77cfbe7
+DELETE https://fullstacktarefa2.onrender.com/tarefas/d3259704-2166-4d6d-b69b-bac23162cd34
